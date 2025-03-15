@@ -1,13 +1,26 @@
 module.exports = {
-    apps: [
-      {
-        name: "my-next-app", // 应用名称
-        script: "npm",       // 使用 npm 启动
-        args: "run start",   // 运行 `npm run start`
-        env: {
-          NODE_ENV: "production", // 设置环境变量
-          PORT: 3000,             // 指定端口号（可选）
-        },
+  apps: [
+    {
+      name: "next-app",
+      script: "npm",
+      args: "run start",
+      env: {
+        NODE_ENV: "production",
+        PORT: 3000,
       },
-    ],
-  };
+      out_file: "/app/logs/out.log",
+      error_file: "/app/logs/error.log",
+      merge_logs: true,
+      log_date_format: "YYYY-MM-DD HH:mm:ss",
+      autorestart: true,
+      max_restarts: 10,
+      restart_delay: 5000,
+      exp_backoff_restart_delay: 100,
+      max_memory_restart: "500M",
+      watch: false,
+      instances: "max",
+      exec_mode: "cluster",
+      cron_restart: "0 2 * * *",
+    },
+  ],
+};
