@@ -10,7 +10,7 @@ module.exports = {
       },
       out_file: "/app/logs/out.json",
       error_file: "/app/logs/error.json",
-      logType:"json",
+      log_type:"json",
       merge_logs: true,
       log_date_format: "YYYY-MM-DD HH:mm:ss",
       autorestart: true,
