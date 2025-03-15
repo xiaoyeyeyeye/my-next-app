@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { log } from 'console';
 
 type Particle = {
   id: number;
@@ -61,10 +59,10 @@ export default function Background() {
         x: xPosition,
         y: yPosition,
         size: Math.random() * 2 + 1, // 雨滴大小
-        color: `rgba(210, 230, 255, ${Math.random() * 0.2 + 0.3})`, // 夜雨中的雨滴颜色
+        color: `hsla(${Math.floor(Math.random() * 360)}, 80%, 75%, ${Math.random() * 0.3 + 0.4})`, // 更亮的彩色雨滴
         velocity: {
           x: 0, 
-          y: Math.random() * 5 + 10, // 稍微加快下落速度
+          y: Math.random() * 5 + 5, // 稍微加快下落速度
         },
       });
     }
@@ -117,23 +115,6 @@ export default function Background() {
           // 当雨滴落到底部，重置到顶部
           if (newY > dimensions.height) {
             newY = -Math.random() * 50;
-            // 避免在左上角区域生成粒子
-            // 左上角区域定义为屏幕宽度的30%和高度的30%
-            const leftUpperAreaWidth = dimensions.width * 0.3;
-            const leftUpperAreaHeight = dimensions.height * 0.3;
-            
-            // 确保新生成的粒子不在左上角区域
-            if (Math.random() < 0.5) {
-              // 在右侧区域生成
-              newX = leftUpperAreaWidth + Math.random() * (dimensions.width - leftUpperAreaWidth);
-            } else {
-              // 在整个宽度范围内生成，但避开左上角
-              newX = Math.random() * dimensions.width;
-              if (newX < leftUpperAreaWidth && newY < leftUpperAreaHeight) {
-                // 如果在左上角区域，则移到右侧
-                newX += leftUpperAreaWidth;
-              }
-            }
           }
 
           return {
@@ -205,8 +186,7 @@ export default function Background() {
             width: particle.size * 1.5,
             height: particle.size * 12, // 更长的雨滴
             backgroundColor: particle.color,
-            boxShadow: `0 0 ${particle.size * 0.8}px ${particle.color}`, 
-            opacity: 0.7,
+            opacity: 0.8,
             transform: `translate(${particle.x}px, ${particle.y}px)`,
             borderRadius: '50%',
           }}
