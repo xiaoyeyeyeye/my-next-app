@@ -2,20 +2,17 @@ import { blogPosts } from '@/data/blogPosts';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
-type BlogPostPageProps = {
-  params: {
+type BlogPostPageProps =Promise< 
+ {
     id: string;
-  };
-};
+  }>;
 
-export function generateMetadata({ params }: BlogPostPageProps) {
-  const post = blogPosts.find((post) => post.id === params.id);
+export async function generateMetadata({ params }: { params: BlogPostPageProps}) {
+  const {id}=await params
+  const post = blogPosts.find((post) => post.id === id);
   
   if (!post) {
-    return {
-      title: '文章未找到',
-      description: '抱歉，您请求的博客文章不存在。',
-    };
+    notFound();
   }
   
   return {
@@ -24,8 +21,9 @@ export function generateMetadata({ params }: BlogPostPageProps) {
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = blogPosts.find((post) => post.id === params.id);
+export default async function BlogPostPage({ params }: { params: BlogPostPageProps}) {
+  const {id}=await params
+  const post = blogPosts.find((post) => post.id === id);
   
   if (!post) {
     notFound();
