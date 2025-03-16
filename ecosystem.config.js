@@ -1,9 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: "next-app",
-      script: "yarn",
-      args: "run build && yarn run start",
+      name: "app",
+      script: "./start.sh",
       env: {
         NODE_ENV: "production",
         PORT: 3000,
