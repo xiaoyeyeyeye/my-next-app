@@ -30,7 +30,7 @@ export default function BlogCard({ id, title, excerpt, date, coverImage, tags }:
             {tags.map((tag) => (
               <span 
                 key={tag} 
-                className="text-xs px-2 py-1 bg-gray-600 dark:bg-gray-800 text-gray-300 dark:text-gray-300 rounded-full"
+                className="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-800 color-(--foreground) dark:color-(--foreground) rounded-full"
               >
                 {tag}
               </span>
@@ -38,19 +38,19 @@ export default function BlogCard({ id, title, excerpt, date, coverImage, tags }:
           </div>
         )}
         
-        <h2 className="text-xl font-bold mb-2 hover:text-blue-300 dark:hover:text-blue-400 transition-colors">
+        <h2 className="text-xl font-bold mb-2 hover:text-dark-600 dark:hover:text-dark-400 transition-colors">
           <Link href={`/blog/${id}`}>
             {title}
           </Link>
         </h2>
         
-        <p className="text-gray-300 dark:text-gray-200 mb-4 flex-grow">{excerpt}</p>
+        <p className="color-(--foreground) dark:text-gray-200 mb-4 flex-grow">{excerpt}</p>
         
-        <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-300 mt-auto">
+        <div className="flex justify-between items-center text-sm text-gray-500 dark:color-(--foreground) mt-auto">
           <time dateTime={date}>{date}</time>
           <Link 
             href={`/blog/${id}`} 
-            className="text-blue-300 dark:text-blue-400 hover:underline flex items-center gap-1"
+            className="text-dark-600 dark:text-dark-400 hover:underline flex items-center gap-1"
           >
             阅读更多
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">

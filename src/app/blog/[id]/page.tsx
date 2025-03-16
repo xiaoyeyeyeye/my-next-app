@@ -37,7 +37,7 @@ export default async function BlogPostPage({ params }: { params: BlogPostPagePro
             {post.tags.map((tag) => (
               <span 
                 key={tag} 
-                className="text-xs px-2 py-1 bg-gray-600 dark:bg-gray-800 text-gray-300 dark:text-gray-300 rounded-full"
+                className="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-800 color-(--foreground) dark:color-(--foreground) rounded-full"
               >
                 {tag}
               </span>

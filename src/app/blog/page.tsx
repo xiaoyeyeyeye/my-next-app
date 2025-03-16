@@ -11,7 +11,7 @@ export default function BlogPage() {
     <div className="container mx-auto px-4 sm:px-6 py-24 min-h-screen">
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-bold mb-4">博客文章</h1>
-        <p className="text-xl text-gray-300 dark:text-gray-200 max-w-2xl mx-auto">
+        <p className="text-xl color-(--foreground) dark:text-gray-200 max-w-2xl mx-auto">
           探索我的最新文章，分享关于Web开发、编程技术和设计的见解。
         </p>
       </div>

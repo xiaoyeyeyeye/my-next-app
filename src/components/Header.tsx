@@ -9,19 +9,19 @@ export default function Header() {
     <header className="fixed w-full   backdrop-blur-md z-10 ">
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold  hover:text-gray-300 dark:hover:text-gray-300 transition-colors">
+          <Link href="/" className="text-2xl font-bold  hover:color-(--foreground) dark:hover:color-(--foreground) transition-colors">
             博客名称
           </Link>
           
           {/* 桌面导航 */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-300 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
+            <Link href="/" className="color-(--foreground) dark:color-(--foreground) hover:text-black dark:hover: transition-colors">
               首页
             </Link>
-            <Link href="/blog" className="text-gray-300 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
+            <Link href="/blog" className="color-(--foreground) dark:color-(--foreground) hover:text-black dark:hover: transition-colors">
               博客
             </Link>
-            <Link href="/about" className="text-gray-300 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
+            <Link href="/about" className="color-(--foreground) dark:color-(--foreground) hover:text-black dark:hover: transition-colors">
               关于
             </Link>
           </nav>
@@ -49,21 +49,21 @@ export default function Header() {
             <nav className="flex flex-col space-y-4">
               <Link 
                 href="/" 
-                className="text-gray-300 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                className="color-(--foreground) dark:color-(--foreground) hover:text-black dark:hover: transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 首页
               </Link>
               <Link 
                 href="/blog" 
-                className="text-gray-300 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                className="color-(--foreground) dark:color-(--foreground) hover:text-black dark:hover: transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 博客
               </Link>
               <Link 
                 href="/about" 
-                className="text-gray-300 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                className="color-(--foreground) dark:color-(--foreground) hover:text-black dark:hover: transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 关于

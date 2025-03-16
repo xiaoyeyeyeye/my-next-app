@@ -11,12 +11,12 @@ export default function Home() {
       {/* 英雄区域 */}
       <div className="mb-16 text-center">
         <h1 className="text-5xl font-bold mb-6">欢迎来到我的博客</h1>
-        <p className="text-xl text-gray-300 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+        <p className="text-xl color-(--foreground) dark:text-gray-400 max-w-2xl mx-auto mb-8">
           这是一个使用Next.js和Tailwind CSS构建的个人博客，分享关于Web开发、编程技术和设计的见解。
         </p>
         <Link 
           href="/blog" 
-          className="inline-block bg-blue-300 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-full transition-colors"
+          className="inline-block bg-dark-600 hover:bg-dark-700  font-medium py-3 px-6 rounded-full transition-colors"
         >
           浏览所有文章
         </Link>
@@ -40,19 +40,19 @@ export default function Home() {
               )}
               
               <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-2 hover:text-blue-300 dark:hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-bold mb-2 hover:text-dark-600 dark:hover:text-dark-400 transition-colors">
                   <Link href={`/blog/${post.id}`}>
                     {post.title}
                   </Link>
                 </h3>
                 
-                <p className="text-gray-300 dark:text-gray-400 mb-4 flex-grow">{post.excerpt}</p>
+                <p className="color-(--foreground) dark:text-gray-400 mb-4 flex-grow">{post.excerpt}</p>
                 
                 <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mt-auto">
                   <time dateTime={post.date}>{post.date}</time>
                   <Link 
                     href={`/blog/${post.id}`} 
-                    className="text-blue-300 dark:text-blue-400 hover:underline flex items-center gap-1"
+                    className="text-dark-600 dark:text-dark-400 hover:underline flex items-center gap-1"
                   >
                     阅读更多
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
@@ -70,13 +70,13 @@ export default function Home() {
       <div className="backdrop-blur-md dark:bg-gray-900/50 rounded-2xl p-8 sm:p-12">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-6 text-center">关于我</h2>
-          <p className="text-lg text-gray-300 dark:text-gray-400 mb-6">
+          <p className="text-lg color-(--foreground) dark:text-gray-400 mb-6">
             你好！我是一名热爱技术和分享的开发者。这个博客是我记录学习心得、分享技术见解的地方。
           </p>
           <div className="flex justify-center">
             <Link 
               href="/about" 
-              className="inline-block border border-blue-300 text-blue-300 hover:bg-blue-300 hover:text-white font-medium py-2 px-6 rounded-full transition-colors"
+              className="inline-block border border-dark-600 text-dark-600 hover:bg-dark-600 hover: font-medium py-2 px-6 rounded-full transition-colors"
             >
               了解更多
             </Link>

@@ -164,7 +164,7 @@ export default function Background() {
       <div 
         className="absolute inset-0 transition-colors duration-500" 
         style={{
-          background: 'linear-gradient(to bottom,rgb(165, 165, 181) 0%,rgb(67, 67, 92) 40%,rgb(47, 47, 64) 100%)', // 更深的夜色背景
+        //   background: 'linear-gradient(to bottom,rgb(165, 165, 181) 0%,rgb(67, 67, 92) 40%,rgb(47, 47, 64) 100%)', // 更深的夜色背景
         }}
       />
       
@@ -183,8 +183,8 @@ export default function Background() {
           key={particle.id}
           className="absolute"
           style={{
-            width: particle.size * 1.5,
-            height: particle.size * 12, // 更长的雨滴
+            width: particle.size * 5,
+            height: particle.size * 5, // 更长的雨滴
             backgroundColor: particle.color,
             opacity: 0.8,
             transform: `translate(${particle.x}px, ${particle.y}px)`,
@@ -197,11 +197,11 @@ export default function Background() {
    
       
       {/* 添加夜雨氛围的光晕效果 */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900 rounded-full mix-blend-soft-light filter blur-[180px] opacity-30 animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-dark-900 rounded-full mix-blend-soft-light filter blur-[180px] opacity-30 animate-pulse" />
       <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-[180px] opacity-30 animate-pulse animation-delay-2000" />
       
       {/* 模拟远处的闪电效果 */}
-      <div className="absolute inset-0 bg-blue-50 opacity-0 animate-lightning mix-blend-overlay" />
+      <div className="absolute inset-0 bg-dark-50 opacity-0 animate-lightning mix-blend-overlay" />
     </div>
   );
 }

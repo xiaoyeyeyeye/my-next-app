@@ -1,8 +1,8 @@
 @import "tailwindcss";
-
+/* @import "./reset.css"; */
 :root {
   --background: #ffffff;
-  --foreground: #B2EBF2;
+  --foreground: #7e1153;
   --card-bg: #f8f9fa;
   --card-border: #e2e8f0;
   --card-shadow: rgba(0, 0, 0, 0.05);
@@ -13,16 +13,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #f5f5f5;
-    --card-bg: #111827;
-    --card-border: #1f2937;
-    --card-shadow: rgba(0, 0, 0, 0.3);
-  }
 }
 
 body {
