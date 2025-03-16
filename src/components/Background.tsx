@@ -35,64 +35,73 @@ export default function Background() {
   // 设置窗口尺寸并生成粒子
   useEffect(() => {
     const handleResize = () => {
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      
       setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: newWidth,
+        height: newHeight,
       });
+      
+      // 当窗口大小改变时，重新生成粒子
+      generateParticles(newWidth, newHeight);
+    };
+
+    // 提取生成粒子的逻辑到单独的函数
+    const generateParticles = (width: number, height: number) => {
+      // 生成雨滴粒子
+      const particleCount = Math.min(Math.floor(width / 8), 250);
+      const newParticles: Particle[] = [];
+
+      // 根据屏幕高度计算速度系数，屏幕越小，速度越慢
+      const speedFactor = Math.min(1, height / 1000);
+      
+      for (let i = 0; i < particleCount; i++) {
+        // 随机分布在整个屏幕顶部上方
+        const xPosition = Math.random() * width;
+        // 随机高度，使雨滴错落有致
+        const yPosition = -Math.random() * height * 0.5;
+        
+        newParticles.push({
+          id: i,
+          x: xPosition,
+          y: yPosition,
+          size: Math.random() * 2 + 1,
+          color: `hsla(${Math.floor(Math.random() * 360)}, 80%, 75%, ${Math.random() * 0.3 + 0.4})`,
+          velocity: {
+            x: 0, 
+            y: (Math.random() * 3 + 3) * speedFactor, // 根据屏幕高度调整速度
+          },
+        });
+      }
+      
+      // 生成背景雾气粒子
+      const starCount = Math.min(Math.floor(width / 20), 80);
+      const newStarParticles: Particle[] = [];
+      
+      for (let i = 0; i < starCount; i++) {
+        let xPosition = Math.random() * width;
+        let yPosition = Math.random() * height;
+        
+        newStarParticles.push({
+          id: i + 1000,
+          x: xPosition,
+          y: yPosition,
+          size: Math.random() * 60 + 30,
+          color: `rgba(70, 90, 120, ${Math.random() * 0.05 + 0.05})`,
+          velocity: {
+            x: (Math.random() - 0.5) * 0.2,
+            y: (Math.random() - 0.5) * 0.1,
+          },
+        });
+      }
+
+      setParticles(newParticles);
+      setStarParticles(newStarParticles);
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
-
-    // 生成雨滴粒子
-    const particleCount = Math.min(Math.floor(window.innerWidth / 8), 250); // 增加雨滴数量
-    const newParticles: Particle[] = [];
-
-    for (let i = 0; i < particleCount; i++) {
-      // 随机分布在整个屏幕顶部上方
-      const xPosition = Math.random() * window.innerWidth;
-      // 随机高度，使雨滴错落有致
-      const yPosition = -Math.random() * window.innerHeight * 0.5;
-      
-      newParticles.push({
-        id: i,
-        x: xPosition,
-        y: yPosition,
-        size: Math.random() * 2 + 1, // 雨滴大小
-        color: `hsla(${Math.floor(Math.random() * 360)}, 80%, 75%, ${Math.random() * 0.3 + 0.4})`, // 更亮的彩色雨滴
-        velocity: {
-          x: 0, 
-          y: Math.random() * 5 + 5, // 稍微加快下落速度
-        },
-      });
-    }
-    
-    // 生成背景雾气粒子 - 增加数量模拟雨雾
-    const starCount = Math.min(Math.floor(window.innerWidth / 20), 80);
-    const newStarParticles: Particle[] = [];
-    
-    
-    
-    for (let i = 0; i < starCount; i++) {
-      let xPosition = Math.random() * window.innerWidth;
-      let yPosition = Math.random() * window.innerHeight;
-      
-      
-      newStarParticles.push({
-        id: i + 1000,
-        x: xPosition,
-        y: yPosition,
-        size: Math.random() * 60 + 30, // 更大的雾气粒子
-        color: `rgba(70, 90, 120, ${Math.random() * 0.05 + 0.05})`, // 暗蓝色雾气
-        velocity: {
-          x: (Math.random() - 0.5) * 0.2,
-          y: (Math.random() - 0.5) * 0.1,
-        },
-      });
-    }
-
-    setParticles(newParticles);
-    setStarParticles(newStarParticles);
 
     return () => window.removeEventListener('resize', handleResize);
   }, [isDarkMode]);
