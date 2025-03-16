@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "next-app",
       script: "yarn",
-      args: "run build && npm run start",
+      args: "run build && yarn run start",
       env: {
         NODE_ENV: "production",
         PORT: 3000,
